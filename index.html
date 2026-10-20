@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101810">
+  <meta name="description" content="SlothSort AI helps you organize digital clutter with open-weight AI and human-approved actions.">
+  <title>SlothSort AI — Do Less. Live More.</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="SlothSort home">
+      <span class="brand-icon">🦥</span>
+      <span>slothsort<span class="brand-ai">.ai</span></span>
+    </a>
+    <div class="topbar-right">
+      <span class="status-dot"></span>
+      <span class="topbar-label">YOUR SPACE, YOUR RULES</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow"><span>✳</span> YOUR PERSONAL CLUTTER ASSISTANT</div>
+      <h1>Less mess.<br><span>More life.</span></h1>
+      <p class="hero-copy">
+        Your files have been waiting long enough.
+        Let open-weight AI do the thinking. You stay in control.
+      </p>
+      <div class="hero-pills">
+        <span>✦ AI-assisted</span>
+        <span>◈ You approve every move</span>
+        <span>↗ No Ollama required</span>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / CONNECT</p>
+          <h2>Give your sloth a brain.</h2>
+          <p class="muted">Connect a model to get intelligent category suggestions.</p>
+        </div>
+        <div class="step-icon">✳</div>
+      </div>
+
+      <div class="ai-panel">
+        <div class="ai-panel-top">
+          <div class="model-icon">AI</div>
+          <div class="model-info">
+            <strong>Open-weight classification</strong>
+            <span>Hugging Face Inference API · BART zero-shot model</span>
+          </div>
+          <span id="aiStatus" class="status-badge">NOT CONNECTED</span>
+        </div>
+
+        <label for="hfToken">Hugging Face access token</label>
+        <div class="token-row">
+          <input id="hfToken" type="password"
+            placeholder="hf_••••••••••••••••"
+            autocomplete="off" spellcheck="false">
+          <button id="connectBtn" class="button button-secondary" type="button">
+            Connect AI
+          </button>
+        </div>
+        <p class="microcopy">
+          Your token stays in this page's memory and is not saved to a file.
+          Never publish your token or commit it to GitHub.
+          Model requests send filenames to the hosted inference provider.
+        </p>
+        <a class="text-link" href="https://huggingface.co/settings/tokens"
+          target="_blank" rel="noopener noreferrer">Get a Hugging Face token ↗</a>
+        <p id="connectMessage" class="message" role="status"></p>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">02 / DISCOVER</p>
+          <h2>Meet your messy folder.</h2>
+          <p class="muted">Choose a folder and let SlothSort inspect its top-level files.</p>
+        </div>
+        <div class="step-icon">⌘</div>
+      </div>
+
+      <div class="folder-drop">
+        <div class="folder-art">📂</div>
+        <h3 id="folderTitle">A little clutter never hurt anyone.</h3>
+        <p id="folderDescription">
+          Pick a test folder with copies of your files to get started.
+        </p>
+        <button id="chooseBtn" class="button button-primary" type="button">
+          Choose a folder <span>↗</span>
+        </button>
+        <p class="microcopy">Works in supported desktop browsers such as Chrome and Edge.</p>
+        <div id="folderMessage" class="message" role="status"></div>
+      </div>
+    </section>
+
+    <section class="dashboard results-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">03 / REVIEW & ORGANIZE</p>
+          <h2>Let the clutter chill.</h2>
+          <p class="muted">Review every suggestion. Nothing moves without your confirmation.</p>
+        </div>
+        <span id="fileCount" class="count-badge">0 FILES</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <span class="stat-label">FILES FOUND</span>
+          <strong id="totalStat">0</strong>
+          <span class="stat-note">In selected folder</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">READY TO SORT</span>
+          <strong id="readyStat">0</strong>
+          <span class="stat-note">Suggestions available</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">YOUR DECISION</span>
+          <strong>100%</strong>
+          <span class="stat-note">You stay in charge</span>
+        </div>
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <div class="empty-symbol">✳</div>
+        <h3>Your files deserve a fresh start.</h3>
+        <p>Choose a folder to see your files here.</p>
+      </div>
+
+      <div id="fileList" class="file-list" aria-live="polite"></div>
+
+      <div class="organize-footer">
+        <div>
+          <strong id="selectionLabel">Nothing selected yet</strong>
+          <p class="microcopy">Files are moved into category folders inside your chosen folder.</p>
+        </div>
+        <button id="organizeBtn" class="button button-primary" type="button" disabled>
+          Organize files ↗
+        </button>
+      </div>
+      <p id="organizeMessage" class="message" role="status"></p>
+    </section>
+
+    <section class="manifesto">
+      <div class="manifesto-icon">🦥</div>
+      <p class="eyebrow">THE SLOTH PHILOSOPHY</p>
+      <h2>Automate the boring.<br><span>Keep the human.</span></h2>
+      <p>
+        Open AI gives builders the freedom to experiment, swap models
+        and make useful tools without locking every idea behind a closed system.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <a class="brand footer-brand" href="#">🦥 slothsort<span class="brand-ai">.ai</span></a>
+      <span>Built for a slower, smarter digital life.</span>
+      <a href="https://huggingface.co/models" target="_blank" rel="noopener noreferrer">
+        Explore open models ↗
+      </a>
+    </footer>
+  </main>
+</body>
+</html>
